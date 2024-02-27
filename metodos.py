@@ -1,6 +1,7 @@
-import numpy as pd
-from sympy import *
 import matplotlib.pyplot as plt
+import numpy as np
+from sympy import *
+
 
 class Metodos:   # clase de -  metodos generales -
     def __init__(self,x,y,a):
@@ -18,7 +19,7 @@ class Metodos:   # clase de -  metodos generales -
             resultado+=valor
         return resultado
     def PolLagrange(self):
-        x=symbol("x")
+        x=Symbol("x")
         polinomio=0
         for i in range(len(self.x)):
             termino=1
@@ -73,7 +74,7 @@ class Metodos:   # clase de -  metodos generales -
         elif metodo=="2":
              plt.title(Metodos[metodo][0])
              px=lambdify(x,Metodos[metodo][1])
-        xi=np.linscape(min(self.x),max(self.x),100)
+        xi=np.linspace(min(self.x),max(self.x),100)
         fi=px(xi)
         plt.ylabel("y")
         plt.xlabel("y")
