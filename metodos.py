@@ -1,3 +1,10 @@
+""" Este código implementa métodos para realizar interpolación polinómica utilizando
+ los métodos de Lagrange y Newton, y también proporciona una función para graficar los resultados"""
+
+
+# importaciones 
+
+
 import matplotlib.pyplot as plt
 import numpy as np
 from sympy import *
@@ -35,8 +42,8 @@ class Metodos:   # clase de -  metodos generales -
         matriz=[[0]*len(self.x) for i in range(len(self.x))]
         for i in range(len(self.x)):
             matriz[i][0]=self.y[i]
-        for i in range(len(self.x)):
-            for j in range(1,len(self.x)):
+        for i in range(1,len(self.x)):
+            for j in range(i,len(self.x)):
                 matriz[j][i]=(matriz[j][i-1]-matriz[j-1][i-1])/(self.x[j]-self.x[j-i])
         return matriz
     def diagonal(self):
@@ -74,7 +81,7 @@ class Metodos:   # clase de -  metodos generales -
         elif metodo=="2":
              plt.title(Metodos[metodo][0])
              px=lambdify(x,Metodos[metodo][1])
-        xi=np.linspace(min(self.x),max(self.x),100)
+        xi=np.linspace(min(self.x),max(self.x),100)  # linspace()
         fi=px(xi)
         plt.ylabel("y")
         plt.xlabel("y")
@@ -87,3 +94,4 @@ class Metodos:   # clase de -  metodos generales -
         plt.show()
 
 
+    
