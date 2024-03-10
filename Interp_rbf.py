@@ -39,7 +39,7 @@ def rbfsuperposit(x, coef, xdat, c):
 datos = np.loadtxt(r"C:\Users\ALEXANDER VILLADA\OneDrive - IUE\Desktop\METODOS_NUMERICOS\dat_cos.txt")
 xdat = datos[:,0]
 ydat = datos[:,1]
-c = 0.5 # parametro de forma
+c = 0.4 # parametro de forma
 
 # matriz de interpolacion 
 matint =  interpmat(xdat, c)
@@ -105,7 +105,7 @@ plt.title("RBF utilizadas en la interpolacion")
 
 
 plt.figure()
-plt.plot(x, (np.cos(x))**10, label = 'Funcion dada')
+plt.plot(x, np.cos(x)**10, label = 'Funcion dada')
 plt.plot(x, yinterp, label = 'interpolacion RBF')
 plt.plot(xdat, ydat, 'or', label = 'Datos')
 plt.xlabel('x')
