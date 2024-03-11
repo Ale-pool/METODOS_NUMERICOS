@@ -62,36 +62,6 @@ def evaluar_polinomio(coeficientes, x, puntos_interpolacion):
         p = p * (puntos_interpolacion - x[k]) + coeficientes[k]
    
     return p
-
-# Función para calcular el polinomio de Lagrange
-def lagrange_interpolacion(x, y, x_eval):
-    # Inicializar la lista de términos del polinomio de Lagrange
-    lagrange_terms = []
-    
-    # Iterar sobre cada punto de datos
-    for i in range(len(x)):
-        # Inicializar el término del polinomio de Lagrange en el punto i
-        term = 1
-        
-        # Iterar sobre cada punto de datos excepto el punto i
-        for j in range(len(x)):
-            if j != i:
-                # Calcular el término del polinomio de Lagrange en el punto x_eval
-                term *= (x_eval - x[j]) / (x[i] - x[j])
-        
-        # Agregar el término del polinomio de Lagrange a la lista
-        lagrange_terms.append(term)
-    
-    # Inicializar el valor del polinomio de Lagrange en el punto x_eval
-    lagrange_value = 0
-    
-    # Calcular el valor del polinomio de Lagrange en el punto x_eval sumando los términos
-    for i in range(len(x)):
-        lagrange_value += y[i] * lagrange_terms[i]
-    
-    # Retornar el valor del polinomio de Lagrange en el punto x_eval
-    return lagrange_value
-
   #  realiza la interpolación utilizando el método de Lagrange para un conjunto de puntos conocidos xi, sus correspondientes valores fxi, y un punto x para el cual queremos interpolar.
 def interpolacion(x, xi, fxi):
     # Obtenemos el numero de puntos conocidos
@@ -115,12 +85,12 @@ def interpolacion(x, xi, fxi):
 
 def main():
     # cargar los respectivos datos desde una dirección local
-    datos = np.loadtxt(r"C:\Users\ALEXANDER VILLADA\OneDrive - IUE\7 SEMESTRE\BASE DE DATOS NO EXTRUCTURADAS\Documents\quiz\tarea2.txt")
+    datos = np.loadtxt(r"C:\Users\ALEXANDER VILLADA\OneDrive - IUE\Desktop\METODOS_NUMERICOS\tarea2.txt")
     xdat = datos[:, 0]
     ydat = datos[:, 1]
 
     # Parámetros para FBR
-    c = 0.5
+    c = 5
 
     fbrmat = interpmat(xdat, c)   # construccion de la matriz de interpolacion para el poli de FBR
 
@@ -140,7 +110,7 @@ def main():
     int_newton = evaluar_polinomio(newton_cof, xdat, puntos_interpolacion)
 
     # se evalua el polinomio de lagrange 
-    int_lagrange = interpolacion(newton_cof, xdat, puntos_interpolacion)
+    int_lagrange = interpolacion(puntos_interpolacion,xdat,ydat)
 
     # se evalua el polinomio de FBR en los puntos
     int_fbr = rbfsuperposit(puntos_interpolacion, fbr_co, xdat, c)
@@ -152,7 +122,7 @@ def main():
     newton_interpol = evaluar_polinomio(newton_cof, xdat, puntos_evaluacion)
 
     # Interpolación de Lagrange en los puntos de evaluación
-    lagrange_interpol = [lagrange_interpolacion(xdat, ydat, x_eval) for x_eval in puntos_evaluacion]
+    lagrange_interpol = [interpolacion(x_eval,xdat, ydat,) for x_eval in puntos_evaluacion]
     
     print("Desarrollo de los datos")
 
@@ -180,6 +150,7 @@ def main():
 
     # se muestra los diferentes datos 
     print()
+    print("SE MUESTRA LOS ERRORES")
     print("Precisión de la interpolación FBR:")
     print("Para x = 1.5:", err_ab_fbr_x1_5)
     print("Para x = 5.7:", err_ab_fbr_x5_7)
@@ -218,14 +189,14 @@ def main():
     plt.grid(True)
 
     # plt.subplot(1, 2, 3)  # Este debería ser el tercer subplot
-    # plt.figure()
-    # plt.plot(xdat, ydat, 'bo', label='Datos originales')
-    # plt.plot(puntos_interpolacion, int_lagrange, 'm-', label='Interpolación de Lagrange')
-    # plt.xlabel('x')
-    # plt.ylabel('y')
-    # plt.title('Interpolación de Lagrange')
-    # plt.legend()
-    # plt.grid(True)
+    plt.figure()
+    plt.plot(xdat, ydat, 'o', label='Datos originales')
+    plt.plot(puntos_interpolacion, int_lagrange, 'm-', label='Interpolación de Lagrange')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title('Interpolación de Lagrange')
+    plt.legend()
+    plt.grid(True)
 
     plt.tight_layout()
     plt.show()
