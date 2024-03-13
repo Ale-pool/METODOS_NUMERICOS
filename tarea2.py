@@ -7,8 +7,9 @@ interpolación basada en funciones de base radial (FBR).
 
 
 """
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+
 
 # se define rbffunction que calcula el valor de la funcion de base radial
 def rbffunction(xev, xdat, c):
@@ -88,6 +89,34 @@ def main():
     datos = np.loadtxt(r"C:\Users\ALEXANDER VILLADA\OneDrive - IUE\Desktop\METODOS_NUMERICOS\tarea2.txt")
     xdat = datos[:, 0]
     ydat = datos[:, 1]
+    # Calcular los coeficientes del polinomio
+    grado_polinomio = len(xdat)-1 # Elegir el grado del polinomio
+    #Numpy polyfit() es un método que ajusta los datos dentro de una función polinómica
+    coeficientes = np.polyfit(xdat, ydat, grado_polinomio)
+
+    # Función para evaluar el polinomio
+    def interpolacion_polinomio(valor_a_interpolar):
+     return np.polyval(coeficientes, valor_a_interpolar)
+    #https://www.geeksforgeeks.org/numpy-polyval-in-python/
+
+    
+    # definir la cantidad de valores a interpolar
+    cantidad_valores = len(xdat)
+
+    # definir los valores a interpolar
+    valores_a_interpolar = xdat
+
+    # Interpolar los valores y mostrar los resultados
+    valores_interpolados = []  # Lista para almacenar los valores interpolados
+    for valor in valores_a_interpolar:
+        valor_interpolado = interpolacion_polinomio(valor)
+        valores_interpolados.append(valor_interpolado)
+        print(f"Interpolación en {valor}: {valor_interpolado}")
+
+    # Rango para la interpolación
+    valores_x_interpolacion = np.linspace(min(xdat), max(xdat), 100)  # Crear 100 puntos entre mínimo y máximo de valores_x
+    valores_y_interpolados = interpolacion_polinomio(valores_x_interpolacion)
+
 
     # Parámetros para FBR
     c = 5
@@ -166,9 +195,19 @@ def main():
       
     # respectiva grafica de los polinomios a interpolar 
     print("GRAFICAS GENERALES")
+
+    # Diagrama de la interpolación
+    plt.plot(xdat, ydat, 'o', label='Datos muestrales')
+    plt.plot(valores_x_interpolacion, valores_y_interpolados, label='Curva interpolada')
+    plt.scatter(valores_a_interpolar, valores_interpolados, marker='x', color='red', label='Valores interpolados')
+    plt.xlabel('Eje X')
+    plt.ylabel('Eje Y')
+    plt.title('Interpolación de Polinomio')
+    plt.legend()
+    plt.grid(True)
     
 
-    
+    # Diagrama de FBR
     plt.figure()
     plt.plot(xdat, ydat, 'bo', label='Datos originales')
     plt.plot(puntos_interpolacion, int_fbr, 'r-', label='Interpolación FBR')
@@ -178,7 +217,7 @@ def main():
     plt.legend()
     plt.grid(True)
 
-   
+   # Diagrama de Newton
     plt.figure()
     plt.plot(xdat, ydat, 'bo', label='Datos originales')
     plt.plot(puntos_interpolacion, int_newton, 'g-', label='Interpolación Newton')
@@ -188,7 +227,7 @@ def main():
     plt.legend()
     plt.grid(True)
 
-    # plt.subplot(1, 2, 3)  # Este debería ser el tercer subplot
+    # Diagrama de lagrange
     plt.figure()
     plt.plot(xdat, ydat, 'o', label='Datos originales')
     plt.plot(puntos_interpolacion, int_lagrange, 'm-', label='Interpolación de Lagrange')
