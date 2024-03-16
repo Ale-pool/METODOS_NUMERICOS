@@ -86,7 +86,7 @@ def interpolacion(x, xi, fxi):
 
 def main():
     # cargar los respectivos datos desde una dirección local
-    datos = np.loadtxt(r"C:\Users\ALEXANDER VILLADA\OneDrive - IUE\Desktop\METODOS_NUMERICOS\tarea2.txt")
+    datos = np.loadtxt(r"C:\Users\ALEXANDER VILLADA\OneDrive - IUE\Desktop\METODOS_NUMERICOS\quiz1.txt")
     xdat = datos[:, 0]
     ydat = datos[:, 1]
     # Calcular los coeficientes del polinomio
@@ -130,7 +130,7 @@ def main():
     newton_cof = interpolacion_newton(xdat, ydat)
 
     # se presenta los puntos a evaluar 
-    puntos_evaluacion = [1.5, 5.7]
+    puntos_evaluacion = [-0.665, 0.865]
 
      # realizar puntos de interpolacion
     puntos_interpolacion = np.linspace(min(xdat), max(xdat), 100)
