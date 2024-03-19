@@ -1,0 +1,48 @@
+El presente documento esta orientado al desarrollo de los metodos y solucion del siguiente ejercicio sobre ecuaciones
+ diferenciales ordinarias
+
+ Ejercicio:
+
+Para la siguiente ecuacion diferencial ordinaria:
+
+y′=−2x+yx 
+y(1)=−3;1≤x≤2
+
+Realice un programa en Python:
+
+Resuelva la EDO empleando los siguientes métodos:
+Runge – Kutta 1er orden – Euler
+Runge – Kutta 2º orden
+Runge – Kutta 4º orden
+
+Genere una gráfica que incluya las soluciones por cada uno de los métodos, con tamaños de paso  h=0.5 .
+
+(Métodos de Runge-Kutta:)
+
+A continuación se describiran los metodos para la solucion de ecuaciones diferenciales ordinarias de la forma
+
+
+dy/dx=f(x,y) 
+
+empleando procedimientos de solucion de un paso, es decir que satisfacen una ecuacion de la forma
+
+yi+1=yi+ϕh 
+
+donde  ϕ  es la pendiente estimada,  yi  es el valor anterior de la funcion y  yi+1  es el nuevo valor o aproximacion de 
+la funcion al aplicar un incremento  h .
+
+(Método de Euler):
+
+Metodo de euler
+
+dy/dx=f(x,y)
+yi+1=yi+ϕh
+La primera derivada ofrece una estimación directa de la pendiente en  xi
+ϕ=f(xi,yi)
+
+donde  ƒ(xi,yi)  es la ecuación diferencial evaluada en  xi  y  yi . La estimación se sustituye en la ecuación
+yi+1=yi+f(xi,yi)h
+
+- Esta informacion se tomo como metodo de estudio y de aprendizaje de la materia de Metodos Numericos
+Archivo sacado de: https://colab.research.google.com/gist/ingangelocastano/d416a1ef6ce572eca19f07e9268f5ab6/metodo-de-euler.ipynb#scrollTo=ixurtwpzRPEe
+Autor: https://www.youtube.com/@IngAngeloCastano
