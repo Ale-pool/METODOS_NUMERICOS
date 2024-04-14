@@ -81,11 +81,10 @@ while True:
         print(" ============== Tabla de valores ======")
         print("{:^10}{:^10}{:^10}".format("i","x","y"))
         for i in range(1,itc+1):
-            k1=z.subs([(x,xi),(y,yi)])
-            k2=z.subs([(x,xi+h/2),(y,yi+(h*k1)/2)])
+            k1=z.subs([(x,xi),(y,yi)])                # error en el valor de subs
+            k2=z.subs([(x,xi+h/2),(y,yi+(h*k1)/2)])   # f1=z.subs([(x,xi+h),(y,yi)])
             k3=z.subs([(x,x+h/2),(y,yi+(h*k2)/2)])
             k4=z.subs([(x,xi+h),(y,yi+h*k3)])
-            k5=z.s
             yn=yi+(k1+2*k2+2*k3+k4)*(h/6)
             print("{:^10}{:^10}{:^10}".format(i,round(xi+h,5),yn))
             print("")
@@ -95,8 +94,9 @@ while True:
             vy.append(yi)
         plt.xticks(vx)
         plt.title("metodo de runge kutta de cuarto orden")
-
-#proceso de grafica de la función
+        print("===========paso1===================")
+        
+#proceso de grafica de la función    # por aqui no esta entrando el metodo
         print('Valor aproximado: ',yn)
         plt.xlabel("eje x")
         plt.ylabel("eje y")

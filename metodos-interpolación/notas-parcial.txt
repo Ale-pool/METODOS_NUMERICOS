@@ -1,0 +1,35 @@
+---------------------------------------------------------------
+
+
+El método de interpolación de funciones de base radial (FBR) es una técnica utilizada para aproximar una función desconocida a partir de un conjunto de datos conocidos. A continuación, se explica este método a través de los siguientes puntos:
+
+Propósito del método:
+
+El propósito principal del método de interpolación de funciones de base radial es aproximar una función desconocida a partir de un conjunto de datos conocidos mediante la construcción de una combinación lineal de funciones de base radial.
+¿Qué construye el método de FBR?:
+
+El método de FBR construye una combinación lineal de funciones de base radial para aproximar la función desconocida. Estas funciones de base radial son funciones que dependen de la distancia entre el punto de interpolación y los puntos de datos conocidos.
+¿Cuáles son las incógnitas?:
+
+Las incógnitas en el método de FBR son los coeficientes que multiplican a las funciones de base radial en la combinación lineal. Estos coeficientes se determinan mediante la solución de un sistema de ecuaciones lineales que surge al imponer condiciones de interpolación.
+¿Cuál es el objetivo del método?:
+
+El objetivo del método de interpolación de funciones de base radial es encontrar una aproximación suave y continua de la función desconocida que pase a través de los puntos de datos conocidos. Esto se logra construyendo una combinación lineal de funciones de base radial que se ajusten a los datos de manera óptima, minimizando así el error de interpolación.
+
+--------------------------------------------------------------------------
+
+
+El método de interpolación de Newton es una técnica utilizada para aproximar una función desconocida a partir de un conjunto de datos conocidos. A continuación, se explica este método a través de los siguientes puntos:
+
+Propósito del método:
+
+El propósito principal del método de interpolación de Newton es aproximar una función desconocida mediante la construcción de un polinomio interpolador que pase exactamente a través de los puntos de datos conocidos. Este polinomio se utiliza para interpolar valores entre los puntos de datos conocidos.
+¿Qué construye el método de Interpolación de Newton?:
+
+El método de Interpolación de Newton construye un polinomio interpolador que pasa exactamente a través de los puntos de datos conocidos. Este polinomio se construye en la forma de una suma de términos, donde cada término se calcula de manera recursiva utilizando diferencias divididas.
+¿Cuáles son las incógnitas?:
+
+Las incógnitas en el método de Interpolación de Newton son los coeficientes del polinomio interpolador. Estos coeficientes se calculan utilizando las diferencias divididas de los puntos de datos conocidos.
+¿Cuál es el objetivo del método?:
+
+El objetivo del método de Interpolación de Newton es encontrar un polinomio interpolador que pase exactamente a través de los puntos de datos conocidos, lo que permite interpolar valores entre estos puntos con alta precisión. Esto se logra mediante la construcción de un polinomio que minimice el error de interpolación y que sea fácil de evaluar en cualquier punto dentro del rango de datos conocidos.

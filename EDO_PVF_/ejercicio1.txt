@@ -1,0 +1,62 @@
+
+resolver el problema de valor en la frontera:
+
+4y"-2y'+ y + x = 0
+
+condiciones inciales:
+
+y(0)= 1,
+y(20)= 10
+
+mediante esquema con diferencias centrales, considerando un paso de h= 5,
+construir un codigo que permita evaluar el problema en un numero de n interiores
+
+Problema:
+4y"-2y'+ y + x = 0
+
+con x0= 0, y0= 1, xf= 20 y yf= 10
+
+considerando el esquema de diferencias divididas centrales en la ecuación
+diferencial 4y"-2y'+ y + x = 0 se tiene:
+
+4[yi+1-2yi+2y-1/h**2] -2 [yi+1 - yi-1/2h]  + yi + xi = 0
+
+simplificando y multiplicando por h**2 :
+
+4[yi+1 - 2yi + yi-1] - h[yi+1-yi-1]+h**2yi + h**2xi = 0
+
+Reorganizando tenemos:
+
+(4-h)yi+1 + (h**2 - 8)yi + (4+h)yi-1 = -h**2xi
+
+en relacion con el h de paso como en este caso es h=5 vemos
+lo siguiente
+
+(4-h)yi+1 + (h**2 - 8)yi + (4+h)yi-1 = -h**2xi
+
+tomando h = 5;
+
+-yi+1 + 17yi + 9yi-1 = 25xi
+
+en este caso, se tiene que:
+
+x0= 0, x1= 5,  x2=10 , x3=15, x4= 20,  y(0)=1 , y(4)= 10
+
+luego para i = 1,2,3 se tendria el sistema de ecuaciones
+
+-y2 + 17y1 + 9y0 = -25x1
+-y3 + 17y2 + 9y1 = -25x2
+-y4 + 17y3 + 9y2 = -25x3
+
+----------------------------
+      -y2 + 17y1 = -134
+-y3 + 17y2 + 9y1 = -250 
+     17y3 + 9y2 =  -365
+
+forma matricial :
+
+[17 -1  0] [y1] = [-134]
+[9  17 -1] [y2] = [-250]
+[0   9 17] [y3] = [-365]
+
+solución: y1 = -8.5355, y2= -11.1042, y3= -15.5919
