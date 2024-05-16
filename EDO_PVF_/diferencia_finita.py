@@ -12,10 +12,10 @@ n=int(n)
 
 # información del problema en especifico
 x0 = 0
-xf = 20
+xf = 0
 y0 = 1
-yf = 10
-h = (xf-x0)/(n+1)
+yf = -1
+h = 0.1    #(xf-x0)/(n+1) 
 
 # procedemos a desarrollar el conjunto de datos < x >
 x = np.linspace(x0,xf,n+2)

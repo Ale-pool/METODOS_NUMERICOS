@@ -1,0 +1,227 @@
+Ecuación Diferencial Ordinaria (EDO): El método de Heun se aplica a una EDO de la forma:
+dtdy​=f(t,y)
+Donde:
+
+(y(t)) es la función desconocida que queremos aproximar.
+(f(t, y)) es una función conocida que describe la tasa de cambio de (y) con respecto al tiempo (t).
+
+
+
+Intervalo de Integración: Se debe especificar un intervalo de integración, generalmente denotado como ([a, b]), donde (a) es el valor inicial de (t) y (b) es el valor final.
+
+
+Condición Inicial: Para resolver la EDO, necesitamos una condición inicial. Por ejemplo:
+
+(y(a) = y_0), donde (y_0) es el valor inicial de la función (y) en (t = a).
+
+
+
+Paso de Integración: El método de Heun utiliza un paso de integración (h), que determina el tamaño de los incrementos en el dominio de (t). El valor de (h) afecta la precisión de la 
+
+Iteraciones del Método de Heun:
+Calculamos una estimación intermedia (y_{\text{intermedio}}) usando el método de Euler: [y_{\text{intermedio}} = y_n + h \cdot f(t_n, y_n)]
+Luego, calculamos la pendiente promedio en el intervalo ([t_n, t_{n+1}]): [k_1 = f(t_n, y_n)] [k_2 = f(t_{n+1}, y_{\text{intermedio}})] [k_{\text{promedio}} = \frac{1}{2} (k_1 + k_2)]
+Finalmente, actualizamos la aproximación de (y) en el siguiente paso: [y_{n+1} = y_n + h \cdot k_{\text{promedio}}]
+Objetivo: El objetivo es encontrar una aproximación de (y) en puntos discretos dentro del intervalo ([a, b]).
+En resumen, las incógnitas y consideraciones clave en el método de Heun son:
+
+La función (f(t, y)) que describe la EDO.
+La condición inicial (y(a)).
+El paso de integración (h).
+El intervalo de integración ([a, b]).
+
+
+----------------------------------------------------------------------
+
+El método del punto medio, también conocido como método de Euler mejorado o método de Heun, es un método numérico utilizado para resolver ecuaciones diferenciales ordinarias (EDO) de primer orden. Este método se basa en la aproximación de la solución de la EDO a través de la estimación de la pendiente en dos puntos: el punto inicial y el punto medio entre el punto inicial y el siguiente punto.
+
+Para aplicar el método del punto medio a una EDO, como 
+𝑦
+′
+(
+𝑥
+)
+=
+𝑓
+(
+𝑥
+,
+𝑦
+)
+y 
+′
+ (x)=f(x,y) con una condición inicial 
+𝑦
+(
+𝑥
+0
+)
+=
+𝑦
+0
+y(x 
+0
+​
+ )=y 
+0
+​
+ , se deben tener en cuenta los siguientes elementos:
+
+Ecuación diferencial ordinaria (EDO): La ecuación diferencial que se quiere resolver debe estar en la forma estándar 
+𝑦
+′
+(
+𝑥
+)
+=
+𝑓
+(
+𝑥
+,
+𝑦
+)
+y 
+′
+ (x)=f(x,y), donde 
+𝑓
+(
+𝑥
+,
+𝑦
+)
+f(x,y) es una función conocida que define la pendiente de la solución en cualquier punto 
+(
+𝑥
+,
+𝑦
+)
+(x,y).
+
+Condición inicial: Debe conocerse el valor de 
+𝑦
+y en un punto inicial 
+𝑥
+=
+𝑥
+0
+x=x 
+0
+​
+ , es decir, 
+𝑦
+(
+𝑥
+0
+)
+=
+𝑦
+0
+y(x 
+0
+​
+ )=y 
+0
+​
+ .
+
+Intervalo de integración: Se debe definir el intervalo de 
+𝑥
+x en el cual se desea aproximar la solución de la EDO.
+
+El método del punto medio utiliza la siguiente iteración para aproximar la solución de la EDO:
+
+Calcular el valor de la función 
+𝑓
+(
+𝑥
+𝑖
+,
+𝑦
+𝑖
+)
+f(x 
+i
+​
+ ,y 
+i
+​
+ ) en el punto actual 
+(
+𝑥
+𝑖
+,
+𝑦
+𝑖
+)
+(x 
+i
+​
+ ,y 
+i
+​
+ ).
+Utilizar este valor para estimar la pendiente promedio entre el punto actual y el siguiente punto en el intervalo de integración.
+Utilizar esta pendiente promedio para estimar el valor de la función en el siguiente punto intermedio 
+(
+𝑥
+𝑖
++
+1
+/
+2
+,
+𝑦
+𝑖
++
+1
+/
+2
+)
+(x 
+i+1/2
+​
+ ,y 
+i+1/2
+​
+ ).
+Calcular el valor de la función en el punto intermedio 
+𝑓
+(
+𝑥
+𝑖
++
+1
+/
+2
+,
+𝑦
+𝑖
++
+1
+/
+2
+)
+f(x 
+i+1/2
+​
+ ,y 
+i+1/2
+​
+ ).
+Utilizar este valor para estimar la pendiente en el punto intermedio.
+Utilizar esta pendiente para calcular el valor aproximado de 
+𝑦
+y en el siguiente punto 
+𝑥
+𝑖
++
+1
+x 
+i+1
+​
+ .
+El objetivo es encontrar una aproximación de la solución de la EDO en varios
+ puntos dentro del intervalo de integración. A medida que se repite este 
+ proceso, se obtiene una aproximación más precisa de la solución en cada
+  punto. La precisión de la aproximación depende del tamaño del paso 
+  (intervalo entre puntos) y de la naturaleza de la EDO.
